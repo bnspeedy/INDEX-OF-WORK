@@ -244,8 +244,12 @@ function Helix({
     const project = PROJECTS[index];
     const isFocused = focusedId === project.id;
 
-    const targetTheta = isFocused ? -baseAngle : theta;
-    const rotateY = targetTheta + baseAngle;
+    // When focusing, compute the nearest equivalent of 0 deg to the current
+    // rotation so we don't transition across 700+ degrees of accumulated theta.
+    const liveRotation = theta + baseAngle;
+    const focusedRotation = Math.round(liveRotation / 360) * 360;
+
+    const rotateY = isFocused ? focusedRotation : liveRotation;
     const translateZ = isFocused
       ? tweaks.helixRadius + tweaks.focusDistance
       : tweaks.helixRadius;

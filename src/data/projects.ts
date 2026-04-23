@@ -29,13 +29,13 @@ export const PROJECTS: Project[] = [
     id: "repose-light-cadence",
     number: "01",
     title: "Repose — Light + Cadence",
-    year: "2025",
+    year: "2026",
     location: "Grey Lynn, Auckland",
     status: "Design",
     type: "Dual dwelling",
-    role: "Architect",
+    role: "Architect / Developer — marketing, rendering, interior design",
     description:
-      "A pair of dwellings on a single Grey Lynn site. Cadence retains the villa frontage and rhythm of the street, then opens into a contemporary oxide-red volume to the rear. Light holds back in deep blue-black, opening fully to the garden. The two read as a pair precisely because they are not identical.",
+      "Light + Cadence is a contemporary residential project grounded in the rhythm, proportion, and quiet order of Grey Lynn's timber villa fabric. The proposal explores how architectural repetition and daylight can work together to shape both the public face of the home and its internal domestic life. Rather than relying on stylistic reference, the project is driven by measured alignment, material restraint, and spatial sequencing. The result is an architecture that listens closely to its context while establishing a calm, enduring presence.",
     hero: "/projects/repose-light-cadence/hero.jpg",
     gallery: [
       "/projects/repose-light-cadence/01.jpg",

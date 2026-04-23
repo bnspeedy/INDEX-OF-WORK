@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <rect width="800" height="600" fill="#e8e3d8"/>
+  <g stroke="#111" stroke-width="1" fill="none" opacity="0.35">
+    <line x1="0" y1="200" x2="800" y2="200"/>
+    <line x1="0" y1="400" x2="800" y2="400"/>
+    <line x1="266" y1="0" x2="266" y2="600"/>
+    <line x1="533" y1="0" x2="533" y2="600"/>
+  </g>
+  <g fill="#111" opacity="0.85">
+    <rect x="200" y="280" width="400" height="220"/>
+    <polygon points="200,280 400,180 600,280"/>
+    <rect x="280" y="380" width="80" height="120" fill="#e8e3d8"/>
+    <rect x="440" y="380" width="80" height="120" fill="#e8e3d8"/>
+  </g>
+  <text x="400" y="560" text-anchor="middle" font-family="monospace" font-size="14" fill="#111" opacity="0.5">PLACEHOLDER · HERO</text>
+</svg>

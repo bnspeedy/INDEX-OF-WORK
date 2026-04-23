@@ -125,3 +125,29 @@ a {
   border-radius: 0;
   cursor: pointer;
 }
+
+/* Thin hairline scrollbars (rail, detail panel, mobile list) */
+.side-rail::-webkit-scrollbar,
+.detail-panel::-webkit-scrollbar,
+.mobile-list::-webkit-scrollbar {
+  width: 1px;
+}
+
+.side-rail::-webkit-scrollbar-track,
+.detail-panel::-webkit-scrollbar-track,
+.mobile-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.side-rail::-webkit-scrollbar-thumb,
+.detail-panel::-webkit-scrollbar-thumb,
+.mobile-list::-webkit-scrollbar-thumb {
+  background: var(--ink);
+}
+
+.side-rail,
+.detail-panel,
+.mobile-list {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink) transparent;
+}

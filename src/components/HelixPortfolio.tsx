@@ -358,7 +358,7 @@ function Helix({
 
 function MobileList({ onProjectClick }: { onProjectClick: (id: string) => void }) {
   return (
-    <div style={{ width: "100%", height: "100%", overflowY: "auto", padding: "20px" }}>
+    <div className="mobile-list" style={{ width: "100%", height: "100%", overflowY: "auto", padding: "20px" }}>
       <div
         style={{
           fontFamily: "var(--font-instrument-serif)",
@@ -495,6 +495,7 @@ function SideRail({
 }) {
   return (
     <div
+      className="side-rail"
       style={{
         position: "absolute",
         left: railOpen ? 0 : -320,
@@ -622,6 +623,7 @@ function DetailPanel({
 
   return (
     <div
+      className="detail-panel"
       style={{
         position: "absolute",
         right: 0,

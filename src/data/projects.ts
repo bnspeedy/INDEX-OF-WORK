@@ -26,21 +26,24 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   {
-    id: "project-01",
+    id: "repose-light-cadence",
     number: "01",
-    title: "Project One",
+    title: "Repose — Light + Cadence",
     year: "2025",
-    location: "Auckland, NZ",
-    status: "Built",
-    type: "Residential alteration",
+    location: "Grey Lynn, Auckland",
+    status: "Design",
+    type: "Dual dwelling",
     role: "Architect",
     description:
-      "Short paragraph describing the project. Brief, materiality, the move that defines it. Aim for two or three sentences.",
-    hero: "/projects/placeholder/hero.svg",
+      "A pair of dwellings on a single Grey Lynn site. Cadence retains the villa frontage and rhythm of the street, then opens into a contemporary oxide-red volume to the rear. Light holds back in deep blue-black, opening fully to the garden. The two read as a pair precisely because they are not identical.",
+    hero: "/projects/repose-light-cadence/hero.jpg",
     gallery: [
-      "/projects/placeholder/01.svg",
-      "/projects/placeholder/02.svg",
-      "/projects/placeholder/03.svg",
+      "/projects/repose-light-cadence/01.jpg",
+      "/projects/repose-light-cadence/02.jpg",
+      "/projects/repose-light-cadence/04.jpg",
+      "/projects/repose-light-cadence/05.jpg",
+      "/projects/repose-light-cadence/03.jpg",
+      "/projects/repose-light-cadence/06.jpg",
     ],
   },
   {

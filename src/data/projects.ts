@@ -82,6 +82,7 @@ export const PROJECTS: Project[] = [
       "/projects/repose-duo/06.jpg",
       "/projects/repose-duo/07.jpg",
       "/projects/repose-duo/08.jpg",
+      "/projects/repose-duo/09.jpg",
     ],
   },
   {

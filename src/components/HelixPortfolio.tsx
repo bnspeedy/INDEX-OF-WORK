@@ -9,14 +9,14 @@ const CARDS_PER_RING = 4;
 // Default helix geometry. The site loads with these values; visitors can
 // adjust live via the panel and reset back to these.
 const TWEAK_DEFAULTS = {
-  helixRadius: 580,
-  ringSpacing: 380,
-  autoRotateSpeed: 14,
+  helixRadius: 440,
+  ringSpacing: 280,
+  autoRotateSpeed: 13,
   velocityDamping: 0.0001,
-  focusDistance: 100,
-  zoom: 0.5,
-  centerX: 310,
-  centerY: 230,
+  focusDistance: 240,
+  zoom: 0.6,
+  centerX: 0,
+  centerY: 0,
 };
 
 type Tweaks = typeof TWEAK_DEFAULTS;

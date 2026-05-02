@@ -74,25 +74,24 @@ export default function HelixPortfolio() {
   const [hasOpenedTweaks, setHasOpenedTweaks] = useState(false);
 
   // Demo the zoom slider once the user first opens the tweaks panel
+  const zoomRef = useRef(TWEAK_DEFAULTS.zoom);
+  zoomRef.current = tweaks.zoom;
+  const hasDemoedRef = useRef(false);
+
   useEffect(() => {
-    if (!tweaksOpen || hasOpenedTweaks) return;
-    setHasOpenedTweaks(true);
+    if (!tweaksOpen || hasDemoedRef.current) return;
+    hasDemoedRef.current = true;
     setHintActive(false);
 
-    const baseZoom = tweaks.zoom;
-    const peakZoom = Math.min(baseZoom + 0.2, 1.5);
+    const baseZoom = zoomRef.current;
+    const peakZoom = Math.min(baseZoom + 0.3, 1.5);
     const t1 = setTimeout(() => {
       setTweaks((prev) => ({ ...prev, zoom: peakZoom }));
-    }, 250);
+    }, 300);
     const t2 = setTimeout(() => {
       setTweaks((prev) => ({ ...prev, zoom: baseZoom }));
-    }, 1100);
-
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-    };
-  }, [tweaksOpen, hasOpenedTweaks, tweaks.zoom]);
+    }, 1500);
+  }, [tweaksOpen]);
   const [isMobile, setIsMobile] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 

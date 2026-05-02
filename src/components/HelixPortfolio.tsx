@@ -68,6 +68,8 @@ export default function HelixPortfolio() {
   const [galleryIndex, setGalleryIndex] = useState(0);
   const [railOpen, setRailOpen] = useState(false);
   const [tweaksOpen, setTweaksOpen] = useState(false);
+
+  const [tweaks, setTweaks] = useState<Tweaks>(TWEAK_DEFAULTS);
   const [hintActive, setHintActive] = useState(true);
   const [hasOpenedTweaks, setHasOpenedTweaks] = useState(false);
 
@@ -91,7 +93,6 @@ export default function HelixPortfolio() {
       clearTimeout(t2);
     };
   }, [tweaksOpen, hasOpenedTweaks, tweaks.zoom]);
-  const [tweaks, setTweaks] = useState<Tweaks>(TWEAK_DEFAULTS);
   const [isMobile, setIsMobile] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 

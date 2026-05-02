@@ -763,13 +763,17 @@ function DetailPanel({
             ›
           </button>
           <div
+            className="gallery-thumb-strip"
             style={{
               display: "flex",
               gap: "8px",
               padding: "12px 36px",
               overflowX: "auto",
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
             }}
           >
+            <style>{`.gallery-thumb-strip::-webkit-scrollbar { display: none; }`}</style>
             {allImages.map((src, i) => (
               <button
                 key={`${src}-${i}`}

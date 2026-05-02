@@ -620,6 +620,19 @@ function DetailPanel({
 }) {
   const allImages = [project.hero, ...project.gallery];
   const currentImage = allImages[galleryIndex] ?? project.hero;
+  const thumbStripRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const strip = thumbStripRef.current;
+    if (!strip) return;
+    const activeThumb = strip.querySelectorAll("button")[galleryIndex] as HTMLElement | undefined;
+    if (!activeThumb) return;
+    const stripRect = strip.getBoundingClientRect();
+    const thumbRect = activeThumb.getBoundingClientRect();
+    const offset =
+      thumbRect.left - stripRect.left - stripRect.width / 2 + thumbRect.width / 2;
+    strip.scrollTo({ left: strip.scrollLeft + offset, behavior: "smooth" });
+  }, [galleryIndex]);
 
   return (
     <div
@@ -763,6 +776,7 @@ function DetailPanel({
             ›
           </button>
           <div
+            ref={thumbStripRef}
             className="gallery-thumb-strip"
             style={{
               display: "flex",
@@ -771,6 +785,7 @@ function DetailPanel({
               overflowX: "auto",
               scrollbarWidth: "none",
               msOverflowStyle: "none",
+              scrollBehavior: "smooth",
             }}
           >
             <style>{`.gallery-thumb-strip::-webkit-scrollbar { display: none; }`}</style>

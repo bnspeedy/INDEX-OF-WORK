@@ -187,8 +187,6 @@ export const PROJECTS: Project[] = [
       "/projects/ellerslie-villa/01.jpg",
       "/projects/ellerslie-villa/02.jpg",
       "/projects/ellerslie-villa/03.jpg",
-      "/projects/ellerslie-villa/04.jpg",
-      "/projects/ellerslie-villa/05.jpg",
     ],
   },
   {

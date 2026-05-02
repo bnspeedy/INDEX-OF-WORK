@@ -629,7 +629,7 @@ function DetailPanel({
         right: 0,
         top: "40px",
         bottom: "32px",
-        width: isMobile ? "100%" : "440px",
+        width: isMobile ? "100%" : "560px",
         background: "#f4f1ea",
         borderLeft: isMobile ? "none" : "1px solid #111",
         zIndex: 40,
@@ -685,111 +685,112 @@ function DetailPanel({
 
       <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3" }}>
         <CardImage src={currentImage} alt={project.title} fill />
-
-        {allImages.length > 1 && (
-          <>
-            <button
-              onClick={() =>
-                setGalleryIndex(
-                  galleryIndex === 0 ? allImages.length - 1 : galleryIndex - 1,
-                )
-              }
-              aria-label="Previous image"
-              style={{
-                position: "absolute",
-                left: "12px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                width: "36px",
-                height: "36px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                background: "rgba(244, 241, 234, 0.85)",
-                border: "1px solid rgba(17,17,17,0.2)",
-                color: "var(--ink)",
-                fontSize: "16px",
-                lineHeight: 1,
-                cursor: "pointer",
-                transition: "background 0.2s",
-                backdropFilter: "blur(4px)",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "rgba(244, 241, 234, 1)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.background = "rgba(244, 241, 234, 0.85)")
-              }
-            >
-              ‹
-            </button>
-            <button
-              onClick={() =>
-                setGalleryIndex((galleryIndex + 1) % allImages.length)
-              }
-              aria-label="Next image"
-              style={{
-                position: "absolute",
-                right: "12px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                width: "36px",
-                height: "36px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                background: "rgba(244, 241, 234, 0.85)",
-                border: "1px solid rgba(17,17,17,0.2)",
-                color: "var(--ink)",
-                fontSize: "16px",
-                lineHeight: 1,
-                cursor: "pointer",
-                transition: "background 0.2s",
-                backdropFilter: "blur(4px)",
-              }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.background = "rgba(244, 241, 234, 1)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.background = "rgba(244, 241, 234, 0.85)")
-              }
-            >
-              ›
-            </button>
-          </>
-        )}
       </div>
 
       {allImages.length > 1 && (
         <div
           style={{
-            display: "flex",
-            gap: "8px",
-            padding: "12px 20px",
+            position: "relative",
             borderBottom: "1px solid rgba(17,17,17,0.1)",
-            overflowX: "auto",
+          }}
+          onMouseEnter={(e) => {
+            const arrows = e.currentTarget.querySelectorAll<HTMLButtonElement>("[data-gallery-arrow]");
+            arrows.forEach((a) => (a.style.opacity = "1"));
+          }}
+          onMouseLeave={(e) => {
+            const arrows = e.currentTarget.querySelectorAll<HTMLButtonElement>("[data-gallery-arrow]");
+            arrows.forEach((a) => (a.style.opacity = "0"));
           }}
         >
-          {allImages.map((src, i) => (
-            <button
-              key={`${src}-${i}`}
-              onClick={() => setGalleryIndex(i)}
-              aria-label={`View image ${i + 1}`}
-              style={{
-                position: "relative",
-                flex: "0 0 auto",
-                width: "60px",
-                height: "60px",
-                border:
-                  i === galleryIndex
-                    ? "2px solid var(--accent)"
-                    : "1px solid rgba(17,17,17,0.2)",
-                overflow: "hidden",
-              }}
-            >
-              <CardImage src={src} alt="" fill />
-            </button>
-          ))}
+          <button
+            data-gallery-arrow
+            onClick={() =>
+              setGalleryIndex(
+                galleryIndex === 0 ? allImages.length - 1 : galleryIndex - 1,
+              )
+            }
+            aria-label="Previous image"
+            style={{
+              position: "absolute",
+              left: "4px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: "28px",
+              height: "28px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "rgba(244, 241, 234, 0.9)",
+              border: "1px solid rgba(17,17,17,0.15)",
+              color: "var(--ink)",
+              fontSize: "14px",
+              lineHeight: 1,
+              cursor: "pointer",
+              opacity: 0,
+              transition: "opacity 0.2s",
+              zIndex: 2,
+            }}
+          >
+            ‹
+          </button>
+          <button
+            data-gallery-arrow
+            onClick={() =>
+              setGalleryIndex((galleryIndex + 1) % allImages.length)
+            }
+            aria-label="Next image"
+            style={{
+              position: "absolute",
+              right: "4px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              width: "28px",
+              height: "28px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "rgba(244, 241, 234, 0.9)",
+              border: "1px solid rgba(17,17,17,0.15)",
+              color: "var(--ink)",
+              fontSize: "14px",
+              lineHeight: 1,
+              cursor: "pointer",
+              opacity: 0,
+              transition: "opacity 0.2s",
+              zIndex: 2,
+            }}
+          >
+            ›
+          </button>
+          <div
+            style={{
+              display: "flex",
+              gap: "8px",
+              padding: "12px 36px",
+              overflowX: "auto",
+            }}
+          >
+            {allImages.map((src, i) => (
+              <button
+                key={`${src}-${i}`}
+                onClick={() => setGalleryIndex(i)}
+                aria-label={`View image ${i + 1}`}
+                style={{
+                  position: "relative",
+                  flex: "0 0 auto",
+                  width: "60px",
+                  height: "60px",
+                  border:
+                    i === galleryIndex
+                      ? "2px solid var(--accent)"
+                      : "1px solid rgba(17,17,17,0.2)",
+                  overflow: "hidden",
+                }}
+              >
+                <CardImage src={src} alt="" fill />
+              </button>
+            ))}
+          </div>
         </div>
       )}
 

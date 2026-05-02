@@ -8,6 +8,22 @@ const CARDS_PER_RING = 4;
 
 // Default helix geometry. The site loads with these values; visitors can
 // adjust live via the panel and reset back to these.
+const HELIX_NO_SELECT_CSS = `
+  .helix-stage, .helix-stage * {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+  .helix-stage img {
+    -webkit-user-drag: none;
+    user-drag: none;
+    pointer-events: none;
+  }
+  .helix-stage button img {
+    pointer-events: none;
+  }
+`;
+
 const TWEAK_DEFAULTS = {
   helixRadius: 440,
   ringSpacing: 280,
@@ -155,9 +171,10 @@ export default function HelixPortfolio() {
 
   return (
     <div
-      className="grid-bg"
+      className="helix-stage grid-bg"
       style={{ width: "100%", height: "100vh", position: "relative", overflow: "hidden" }}
     >
+      <style>{HELIX_NO_SELECT_CSS}</style>
       <TopBar isMobile={isMobile} />
 
       {!isMobile && (

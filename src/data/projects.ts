@@ -181,9 +181,15 @@ export const PROJECTS: Project[] = [
     type: "Heritage alteration + addition",
     role: "Lead designer — client facing",
     description:
-      "A 200m² alteration and addition to a villa on a heritage-protected street frontage. A feature staircase and split-level living arrangement allow a recessive second-storey addition that sits below the ridge of the existing roof, maintaining the rhythm of the street while opening the rear of the home to the garden. The new work is sympathetic to the heritage values of the site without mimicking them.",
-    hero: PH_HERO,
-    gallery: PH_GALLERY,
+      "A 200m² alteration and addition to a villa on a heritage-protected street frontage. A feature staircase and split-level living arrangement allow a recessive second-storey addition that sits below the ridge of the existing roof, maintaining the rhythm of the street while opening the rear of the home to the garden. The new work is sympathetic to the heritage values of the site without mimicking them. Designed to full Passive House principles, the project achieves airtightness, continuous insulation, and mechanical heat recovery ventilation, retrofitting heritage fabric to contemporary performance standards.",
+    hero: "/projects/ellerslie-villa/hero.jpg",
+    gallery: [
+      "/projects/ellerslie-villa/01.jpg",
+      "/projects/ellerslie-villa/02.jpg",
+      "/projects/ellerslie-villa/03.jpg",
+      "/projects/ellerslie-villa/04.jpg",
+      "/projects/ellerslie-villa/05.jpg",
+    ],
   },
   {
     id: "multi-residential",

@@ -685,6 +685,79 @@ function DetailPanel({
 
       <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3" }}>
         <CardImage src={currentImage} alt={project.title} fill />
+
+        {allImages.length > 1 && (
+          <>
+            <button
+              onClick={() =>
+                setGalleryIndex(
+                  galleryIndex === 0 ? allImages.length - 1 : galleryIndex - 1,
+                )
+              }
+              aria-label="Previous image"
+              style={{
+                position: "absolute",
+                left: "12px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: "36px",
+                height: "36px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "rgba(244, 241, 234, 0.85)",
+                border: "1px solid rgba(17,17,17,0.2)",
+                color: "var(--ink)",
+                fontSize: "16px",
+                lineHeight: 1,
+                cursor: "pointer",
+                transition: "background 0.2s",
+                backdropFilter: "blur(4px)",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.background = "rgba(244, 241, 234, 1)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.background = "rgba(244, 241, 234, 0.85)")
+              }
+            >
+              ‹
+            </button>
+            <button
+              onClick={() =>
+                setGalleryIndex((galleryIndex + 1) % allImages.length)
+              }
+              aria-label="Next image"
+              style={{
+                position: "absolute",
+                right: "12px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: "36px",
+                height: "36px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "rgba(244, 241, 234, 0.85)",
+                border: "1px solid rgba(17,17,17,0.2)",
+                color: "var(--ink)",
+                fontSize: "16px",
+                lineHeight: 1,
+                cursor: "pointer",
+                transition: "background 0.2s",
+                backdropFilter: "blur(4px)",
+              }}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.background = "rgba(244, 241, 234, 1)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.background = "rgba(244, 241, 234, 0.85)")
+              }
+            >
+              ›
+            </button>
+          </>
+        )}
       </div>
 
       {allImages.length > 1 && (

@@ -9,6 +9,31 @@ const CARDS_PER_RING = 4;
 // Default helix geometry. The site loads with these values; visitors can
 // adjust live via the panel and reset back to these.
 const HELIX_NO_SELECT_CSS = `
+  @keyframes hint-wiggle {
+    0%, 100% { transform: translateY(-50%) translateX(0); }
+    15% { transform: translateY(-50%) translateX(-4px); }
+    30% { transform: translateY(-50%) translateX(4px); }
+    45% { transform: translateY(-50%) translateX(-3px); }
+    60% { transform: translateY(-50%) translateX(3px); }
+    75% { transform: translateY(-50%) translateX(-1px); }
+  }
+  @keyframes hint-wiggle-tweaks {
+    0%, 100% { transform: translateX(0); }
+    15% { transform: translateX(-4px); }
+    30% { transform: translateX(4px); }
+    45% { transform: translateX(-3px); }
+    60% { transform: translateX(3px); }
+    75% { transform: translateX(-1px); }
+  }
+  .hint-wiggle-rail {
+    animation: hint-wiggle 0.8s ease-in-out 2;
+    animation-delay: 1.2s;
+  }
+  .hint-wiggle-tweaks {
+    animation: hint-wiggle-tweaks 0.8s ease-in-out 2;
+    animation-delay: 1.6s;
+  }
+
   .helix-stage, .helix-stage * {
     user-select: none;
     -webkit-user-select: none;
@@ -43,6 +68,23 @@ export default function HelixPortfolio() {
   const [galleryIndex, setGalleryIndex] = useState(0);
   const [railOpen, setRailOpen] = useState(true);
   const [tweaksOpen, setTweaksOpen] = useState(false);
+  const [hintActive, setHintActive] = useState(true);
+
+  // Stop the hint wiggle the moment the user does anything
+  useEffect(() => {
+    if (!hintActive) return;
+    const stop = () => setHintActive(false);
+    window.addEventListener("mousedown", stop, { once: true });
+    window.addEventListener("touchstart", stop, { once: true });
+    window.addEventListener("keydown", stop, { once: true });
+    const timeout = setTimeout(stop, 4500);
+    return () => {
+      window.removeEventListener("mousedown", stop);
+      window.removeEventListener("touchstart", stop);
+      window.removeEventListener("keydown", stop);
+      clearTimeout(timeout);
+    };
+  }, [hintActive]);
   const [tweaks, setTweaks] = useState<Tweaks>(TWEAK_DEFAULTS);
   const [isMobile, setIsMobile] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
@@ -181,7 +223,7 @@ export default function HelixPortfolio() {
         <SideRail railOpen={railOpen} focusedId={focusedId} onProjectClick={openProject} />
       )}
 
-      {!isMobile && <RailToggle open={railOpen} onToggle={() => setRailOpen(!railOpen)} />}
+      {!isMobile && <RailToggle open={railOpen} onToggle={() => setRailOpen(!railOpen)} hint={hintActive} />}
 
       <div
         ref={containerRef}
@@ -228,6 +270,7 @@ export default function HelixPortfolio() {
         <TweaksPanel
           open={tweaksOpen}
           onToggle={() => setTweaksOpen(!tweaksOpen)}
+          hint={hintActive}
           tweaks={tweaks}
           onChange={updateTweak}
           onReset={resetTweaks}
@@ -590,11 +633,12 @@ function SideRail({
   );
 }
 
-function RailToggle({ open, onToggle }: { open: boolean; onToggle: () => void }) {
+function RailToggle({ open, onToggle, hint }: { open: boolean; onToggle: () => void; hint?: boolean }) {
   return (
     <button
       onClick={onToggle}
       aria-label={open ? "Close index" : "Open index"}
+      className={hint ? "hint-wiggle-rail" : undefined}
       style={{
         position: "absolute",
         left: open ? "320px" : "0",
@@ -910,12 +954,14 @@ function TweaksPanel({
   tweaks,
   onChange,
   onReset,
+  hint,
 }: {
   open: boolean;
   onToggle: () => void;
   tweaks: Tweaks;
   onChange: <K extends keyof Tweaks>(key: K, value: Tweaks[K]) => void;
   onReset: () => void;
+  hint?: boolean;
 }) {
   return (
     <div
@@ -930,6 +976,7 @@ function TweaksPanel({
       <button
         onClick={onToggle}
         aria-expanded={open}
+        className={hint ? "hint-wiggle-tweaks" : undefined}
         style={{
           display: "block",
           marginLeft: "auto",

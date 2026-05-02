@@ -66,25 +66,31 @@ export default function HelixPortfolio() {
   const [theta, setTheta] = useState(0);
   const [focusedId, setFocusedId] = useState<string | null>(null);
   const [galleryIndex, setGalleryIndex] = useState(0);
-  const [railOpen, setRailOpen] = useState(true);
+  const [railOpen, setRailOpen] = useState(false);
   const [tweaksOpen, setTweaksOpen] = useState(false);
   const [hintActive, setHintActive] = useState(true);
+  const [hasOpenedTweaks, setHasOpenedTweaks] = useState(false);
 
-  // Stop the hint wiggle the moment the user does anything
+  // Demo the zoom slider once the user first opens the tweaks panel
   useEffect(() => {
-    if (!hintActive) return;
-    const stop = () => setHintActive(false);
-    window.addEventListener("mousedown", stop, { once: true });
-    window.addEventListener("touchstart", stop, { once: true });
-    window.addEventListener("keydown", stop, { once: true });
-    const timeout = setTimeout(stop, 4500);
+    if (!tweaksOpen || hasOpenedTweaks) return;
+    setHasOpenedTweaks(true);
+    setHintActive(false);
+
+    const baseZoom = tweaks.zoom;
+    const peakZoom = Math.min(baseZoom + 0.2, 1.5);
+    const t1 = setTimeout(() => {
+      setTweaks((prev) => ({ ...prev, zoom: peakZoom }));
+    }, 250);
+    const t2 = setTimeout(() => {
+      setTweaks((prev) => ({ ...prev, zoom: baseZoom }));
+    }, 1100);
+
     return () => {
-      window.removeEventListener("mousedown", stop);
-      window.removeEventListener("touchstart", stop);
-      window.removeEventListener("keydown", stop);
-      clearTimeout(timeout);
+      clearTimeout(t1);
+      clearTimeout(t2);
     };
-  }, [hintActive]);
+  }, [tweaksOpen, hasOpenedTweaks, tweaks.zoom]);
   const [tweaks, setTweaks] = useState<Tweaks>(TWEAK_DEFAULTS);
   const [isMobile, setIsMobile] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);

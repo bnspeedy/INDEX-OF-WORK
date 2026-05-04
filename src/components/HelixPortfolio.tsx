@@ -668,6 +668,236 @@ function RailToggle({ open, onToggle, hint }: { open: boolean; onToggle: () => v
   );
 }
 
+
+// ──────────────────────────────────────────────────────────────────
+// Lightbox
+// ──────────────────────────────────────────────────────────────────
+
+function Lightbox({
+  images,
+  index,
+  setIndex,
+  onClose,
+  alt,
+}: {
+  images: string[];
+  index: number;
+  setIndex: (i: number) => void;
+  onClose: () => void;
+  alt: string;
+}) {
+  const total = images.length;
+  const current = images[index] ?? images[0];
+
+  // Body scroll lock
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
+
+  // Keyboard nav
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+      else if (e.key === "ArrowLeft") setIndex(index === 0 ? total - 1 : index - 1);
+      else if (e.key === "ArrowRight") setIndex((index + 1) % total);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [index, total, onClose, setIndex]);
+
+  return (
+    <div
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${alt} — image ${index + 1} of ${total}`}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 100,
+        background: "rgba(28, 26, 22, 0.88)",
+        backdropFilter: "blur(8px)",
+        WebkitBackdropFilter: "blur(8px)",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: "64px 80px",
+        animation: "lightboxFadeIn 0.25s ease",
+      }}
+    >
+      <style>{`
+        @keyframes lightboxFadeIn {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+        @keyframes lightboxCardIn {
+          from { opacity: 0; transform: scale(0.96); }
+          to   { opacity: 1; transform: scale(1); }
+        }
+      `}</style>
+
+      {/* Close (top-right of viewport) */}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onClose();
+        }}
+        aria-label="Close image"
+        style={{
+          position: "absolute",
+          top: "20px",
+          right: "24px",
+          width: "40px",
+          height: "40px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "transparent",
+          border: "none",
+          color: "rgba(244, 241, 234, 0.85)",
+          fontSize: "28px",
+          lineHeight: 1,
+          cursor: "pointer",
+          transition: "color 0.2s",
+          zIndex: 2,
+        }}
+        onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(244, 241, 234, 1)")}
+        onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(244, 241, 234, 0.85)")}
+      >
+        ×
+      </button>
+
+      {/* Card containing the image */}
+      <div
+        onClick={(e) => e.stopPropagation()}
+        style={{
+          position: "relative",
+          maxWidth: "min(88vw, 1600px)",
+          maxHeight: "82vh",
+          background: "#f4f1ea",
+          padding: "12px",
+          boxShadow: "0 30px 80px rgba(0,0,0,0.4)",
+          animation: "lightboxCardIn 0.25s ease",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <img
+          src={current}
+          alt={alt}
+          draggable={false}
+          style={{
+            display: "block",
+            maxWidth: "100%",
+            maxHeight: "calc(82vh - 24px)",
+            width: "auto",
+            height: "auto",
+            objectFit: "contain",
+            userSelect: "none",
+          }}
+        />
+
+        {/* Prev / Next (only if more than one image) */}
+        {total > 1 && (
+          <>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIndex(index === 0 ? total - 1 : index - 1);
+              }}
+              aria-label="Previous image"
+              style={{
+                position: "absolute",
+                left: "-56px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: "44px",
+                height: "44px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "rgba(244, 241, 234, 0.12)",
+                border: "1px solid rgba(244, 241, 234, 0.25)",
+                color: "rgba(244, 241, 234, 0.9)",
+                fontSize: "20px",
+                lineHeight: 1,
+                cursor: "pointer",
+                transition: "background 0.2s, border-color 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(244, 241, 234, 0.22)";
+                e.currentTarget.style.borderColor = "rgba(244, 241, 234, 0.5)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(244, 241, 234, 0.12)";
+                e.currentTarget.style.borderColor = "rgba(244, 241, 234, 0.25)";
+              }}
+            >
+              ‹
+            </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIndex((index + 1) % total);
+              }}
+              aria-label="Next image"
+              style={{
+                position: "absolute",
+                right: "-56px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: "44px",
+                height: "44px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "rgba(244, 241, 234, 0.12)",
+                border: "1px solid rgba(244, 241, 234, 0.25)",
+                color: "rgba(244, 241, 234, 0.9)",
+                fontSize: "20px",
+                lineHeight: 1,
+                cursor: "pointer",
+                transition: "background 0.2s, border-color 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(244, 241, 234, 0.22)";
+                e.currentTarget.style.borderColor = "rgba(244, 241, 234, 0.5)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(244, 241, 234, 0.12)";
+                e.currentTarget.style.borderColor = "rgba(244, 241, 234, 0.25)";
+              }}
+            >
+              ›
+            </button>
+          </>
+        )}
+      </div>
+
+      {/* Counter */}
+      {total > 1 && (
+        <div
+          style={{
+            marginTop: "20px",
+            fontFamily: "var(--font-jetbrains)",
+            fontSize: "11px",
+            letterSpacing: "0.2em",
+            color: "rgba(244, 241, 234, 0.6)",
+            textTransform: "uppercase",
+          }}
+        >
+          {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ──────────────────────────────────────────────────────────────────
 // Detail panel
 // ──────────────────────────────────────────────────────────────────
@@ -687,6 +917,7 @@ function DetailPanel({
 }) {
   const allImages = [project.hero, ...project.gallery];
   const currentImage = allImages[galleryIndex] ?? project.hero;
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const thumbStripRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -763,9 +994,23 @@ function DetailPanel({
         </button>
       </div>
 
-      <div style={{ position: "relative", width: "100%", aspectRatio: "4 / 3" }}>
+      <button
+        type="button"
+        onClick={() => setLightboxOpen(true)}
+        aria-label="View image fullscreen"
+        style={{
+          position: "relative",
+          width: "100%",
+          aspectRatio: "4 / 3",
+          padding: 0,
+          border: "none",
+          background: "transparent",
+          cursor: "zoom-in",
+          display: "block",
+        }}
+      >
         <CardImage src={currentImage} alt={project.title} fill />
-      </div>
+      </button>
 
       {allImages.length > 1 && (
         <div
@@ -859,8 +1104,11 @@ function DetailPanel({
             {allImages.map((src, i) => (
               <button
                 key={`${src}-${i}`}
-                onClick={() => setGalleryIndex(i)}
-                aria-label={`View image ${i + 1}`}
+                onClick={() => {
+                  setGalleryIndex(i);
+                  setLightboxOpen(true);
+                }}
+                aria-label={`View image ${i + 1} fullscreen`}
                 style={{
                   position: "relative",
                   flex: "0 0 auto",
@@ -926,6 +1174,16 @@ function DetailPanel({
           <Meta label="Role" value={project.role} />
         </div>
       </div>
+
+      {lightboxOpen && (
+        <Lightbox
+          images={allImages}
+          index={galleryIndex}
+          setIndex={setGalleryIndex}
+          onClose={() => setLightboxOpen(false)}
+          alt={project.title}
+        />
+      )}
     </div>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 import { PROJECTS, type Project } from "@/data/projects";
 
@@ -709,7 +710,9 @@ function Lightbox({
     return () => window.removeEventListener("keydown", onKey);
   }, [index, total, onClose, setIndex]);
 
-  return (
+  if (typeof document === "undefined") return null;
+
+  return createPortal(
     <div
       onClick={onClose}
       role="dialog"
@@ -894,7 +897,8 @@ function Lightbox({
           {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </div>
       )}
-    </div>
+    </div>,
+    document.body,
   );
 }
 

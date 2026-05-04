@@ -782,13 +782,13 @@ function Lightbox({
           position: "relative",
           maxWidth: "min(88vw, 1600px)",
           maxHeight: "82vh",
-          background: "#f4f1ea",
-          padding: "10px",
+          padding: 0,
           border: "1px solid #111",
           boxShadow: "12px 12px 0 rgba(17, 17, 17, 0.85)",
           animation: "lightboxCardIn 0.25s ease",
           display: "flex",
           flexDirection: "column",
+          lineHeight: 0,
         }}
       >
         <img
@@ -798,7 +798,7 @@ function Lightbox({
           style={{
             display: "block",
             maxWidth: "100%",
-            maxHeight: "calc(82vh - 24px)",
+            maxHeight: "82vh",
             width: "auto",
             height: "auto",
             objectFit: "contain",

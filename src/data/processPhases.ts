@@ -22,7 +22,7 @@ export const PHASES: Phase[] = [
     detail:
       "I keep notebooks for every project. Not sketchbooks, notebooks. Pages of overheard sentences, throwaway comments, the offhand 'oh and we'd love a quiet corner somewhere.' These become the project's true north long before any line is drawn.",
     image: "/process/modern-dwelling/interior-living.jpg",
-    caption: "Notes from a first meeting, Dwelling 02",
+    caption: "Notes from a first meeting, Dunedin",
   },
   {
     num: "02",
@@ -35,8 +35,8 @@ export const PHASES: Phase[] = [
     ],
     detail:
       "Often the first 'design' decision is just where the building wants to sit, and that decision is made by walking, not drawing. The pencil comes later.",
-    image: "/process/modern-dwelling/exterior-front.svg",
-    caption: "Front approach, afternoon shadow study",
+    image: "/process/modern-dwelling/exterior-front.jpg",
+    caption: "Site investigation notes, Dunedin",
   },
   {
     num: "03",

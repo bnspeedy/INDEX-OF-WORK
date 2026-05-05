@@ -141,7 +141,7 @@ function EssayView() {
 function ChapterImage({ src, alt, caption }: { src: string; alt: string; caption: string }) {
   return (
     <div className={styles.chapterImage}>
-      <Image src={src} alt={alt} width={1200} height={800} sizes="(max-width: 900px) 100vw, 720px" />
+      <img src={src} alt={alt} loading="lazy" />
       <div className={styles.chapterImageCaption}>{caption}</div>
     </div>
   );
@@ -188,7 +188,7 @@ function TimelineView({
                     </div>
                   </div>
                   <div className={styles.tImage}>
-                    <Image src={p.image} alt={p.marker} width={800} height={600} sizes="(max-width: 900px) 100vw, 600px" />
+                    <img src={p.image} alt={p.marker} loading="lazy" />
                   </div>
                 </div>
               </div>

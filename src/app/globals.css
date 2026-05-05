@@ -155,3 +155,11 @@ a {
 body:has(.helix-stage) {
   overflow: hidden;
 }
+
+/* Safari renders synthetic bold/italic on top of the real glyph at large
+   sizes, creating a doubled/drippy look. Disable synthesis everywhere. */
+* {
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

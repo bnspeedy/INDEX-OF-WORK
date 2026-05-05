@@ -25,7 +25,6 @@ body {
   font-family: var(--font-space-grotesk);
   background: var(--bg);
   color: var(--ink);
-  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -150,4 +149,9 @@ a {
 .mobile-list {
   scrollbar-width: thin;
   scrollbar-color: var(--ink) transparent;
+}
+
+/* Lock scroll on the helix homepage only */
+body:has(.helix-stage) {
+  overflow: hidden;
 }

@@ -1,0 +1,57 @@
+.topBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  border-bottom: 1px solid var(--ink);
+  background: var(--bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  font-family: var(--font-jetbrains);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  z-index: 100;
+}
+
+.topBar a,
+.topBar span {
+  color: var(--ink);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.topBar a:hover {
+  color: var(--accent);
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+.navActive {
+  color: var(--accent);
+}
+
+.bottomBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  border-top: 1px solid var(--ink);
+  background: var(--bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  font-family: var(--font-jetbrains);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  z-index: 100;
+}

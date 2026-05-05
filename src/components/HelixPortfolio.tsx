@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
+import Link from "next/link";
 import { createPortal } from "react-dom";
 import Image from "next/image";
 import { PROJECTS, type Project } from "@/data/projects";
@@ -516,7 +517,16 @@ function TopBar({ isMobile }: { isMobile: boolean }) {
       }}
     >
       <span>BS · Index of Work</span>
-      <span style={{ display: isMobile ? "none" : "block" }}>Helix View</span>
+      <nav
+        style={{
+          display: isMobile ? "none" : "flex",
+          gap: "24px",
+        }}
+      >
+        <span style={{ color: "var(--accent)" }}>Work</span>
+        <Link href="/process" style={{ color: "var(--ink)", transition: "color 0.2s" }}>Process</Link>
+        <Link href="/history" style={{ color: "var(--ink)", transition: "color 0.2s" }}>History</Link>
+      </nav>
       <span>Auckland, NZ</span>
     </div>
   );

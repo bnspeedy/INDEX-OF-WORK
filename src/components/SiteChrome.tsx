@@ -14,7 +14,7 @@ type Props = {
 
 export default function SiteChrome({
   topLeft,
-  topRight = "Auckland",
+  topRight = "Auckland, NZ",
   bottomLeft,
   bottomRight,
   children,

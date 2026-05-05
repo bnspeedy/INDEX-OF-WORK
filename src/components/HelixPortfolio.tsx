@@ -521,6 +521,10 @@ function TopBar({ isMobile }: { isMobile: boolean }) {
         style={{
           display: isMobile ? "none" : "flex",
           gap: "24px",
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          transform: "translate(-50%, -50%)",
         }}
       >
         <span style={{ color: "var(--accent)" }}>Work</span>

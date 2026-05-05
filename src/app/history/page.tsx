@@ -30,7 +30,7 @@ export default function HistoryPage() {
                 <div className={styles.heroContact}>
                   <a href="mailto:bnspeedy@gmail.com">bnspeedy@gmail.com</a>
                   <a href="tel:+61487958188">+61 487 958 188</a>
-                  <span>Auckland / March 1994</span>
+                  <span>Living Bronte, Sydney · Working across AU + NZ</span>
                 </div>
               </div>
               <div className={styles.heroPortrait}>

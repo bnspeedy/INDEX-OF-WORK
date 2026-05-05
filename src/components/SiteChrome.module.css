@@ -32,7 +32,7 @@
   display: flex;
   gap: 24px;
   position: fixed;
-  left: 50%;
+  left: 50vw;
   top: 20px;
   transform: translate(-50%, -50%);
   z-index: 101;

@@ -522,7 +522,7 @@ function TopBar({ isMobile }: { isMobile: boolean }) {
           display: isMobile ? "none" : "flex",
           gap: "24px",
           position: "fixed",
-          left: "50%",
+          left: "50vw",
           top: "20px",
           transform: "translate(-50%, -50%)",
         }}

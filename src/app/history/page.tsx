@@ -197,6 +197,17 @@ export default function HistoryPage() {
                 <p>
                   <strong>Best travel experience?</strong> I took part in a brilliant trip called the Mongol Rally, a charity drive from London to Mongolia. Along with two mates across 12 weeks, I covered 30 countries, 35,000 km in a 2-door, $1,000, 900cc Suzuki Swift, one of the most challenging and rewarding adventures of my life.
                 </p>
+                <div className={styles.rallyGrid}>
+                  <div className={styles.rallyCard}>
+                    <img src="/history/mongol-rally/01.jpg" alt="Mongol Rally, mountain pass" />
+                  </div>
+                  <div className={styles.rallyCard}>
+                    <img src="/history/mongol-rally/02.jpg" alt="Mongol Rally, storm rolling in" />
+                  </div>
+                  <div className={styles.rallyCard}>
+                    <img src="/history/mongol-rally/03.jpg" alt="Mongol Rally, cloud-wrapped switchback" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -22,7 +22,7 @@ export const PHASES: Phase[] = [
     detail:
       "I keep notebooks for every project. Not sketchbooks, notebooks. Pages of overheard sentences, throwaway comments, the offhand 'oh and we'd love a quiet corner somewhere.' These become the project's true north long before any line is drawn.",
     image: "/process/modern-dwelling/interior-living.jpg",
-    caption: "Notes from a first meeting, Dunedin",
+    caption: "Notes from a first meeting, forever home",
   },
   {
     num: "02",

@@ -18,17 +18,24 @@ export default function HistoryPage() {
       <div className={`${styles.gridBg} ${styles.page}`}>
         <div className={styles.container}>
           <div className={styles.hero}>
-            <div className={styles.heroEyebrow}>
-              Curriculum Vitae · Benjamin Thomas Thorn Speedy
-            </div>
-            <h1 className={styles.heroTitle}>Ben Speedy</h1>
-            <p className={styles.heroIntro}>
-              Architect with over 10 years&apos; experience delivering residential projects ranging from high-end bespoke homes to cost-sensitive investment developments. I currently lead The Development Collective, a development-led architecture studio where I work across site assessment, feasibility, planning, design, and delivery.
-            </p>
-            <div className={styles.heroContact}>
-              <a href="mailto:bnspeedy@gmail.com">bnspeedy@gmail.com</a>
-              <a href="tel:+61487958188">+61 487 958 188</a>
-              <span>Auckland / March 1994</span>
+            <div className={styles.heroLayout}>
+              <div className={styles.heroLeft}>
+                <div className={styles.heroEyebrow}>
+                  Curriculum Vitae · Benjamin Thomas Thorn Speedy
+                </div>
+                <h1 className={styles.heroTitle}>Ben Speedy</h1>
+                <p className={styles.heroIntro}>
+                  Architect with over 10 years&apos; experience delivering residential projects ranging from high-end bespoke homes to cost-sensitive investment developments. I run an architecture-led development practice spanning site assessment, feasibility, planning, design, and delivery.
+                </p>
+                <div className={styles.heroContact}>
+                  <a href="mailto:bnspeedy@gmail.com">bnspeedy@gmail.com</a>
+                  <a href="tel:+61487958188">+61 487 958 188</a>
+                  <span>Auckland / March 1994</span>
+                </div>
+              </div>
+              <div className={styles.heroPortrait}>
+                <img src="/portrait/ben.jpg" alt="Ben Speedy" />
+              </div>
             </div>
           </div>
 

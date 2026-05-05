@@ -49,8 +49,8 @@ export const PHASES: Phase[] = [
     ],
     detail:
       "Deep investigation collapses the design timeline overall. The hours spent here are repaid five-fold downstream, when there are no surprises and every detail has a parent.",
-    image: "/process/modern-dwelling/elevation.svg",
-    caption: "Elevation studies, found, not invented",
+    image: "/process/modern-dwelling/elevation.jpg",
+    caption: "Heritage zone street frontage + contemporary sensibilities",
   },
   {
     num: "04",

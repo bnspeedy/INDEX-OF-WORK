@@ -63,7 +63,7 @@ export const PHASES: Phase[] = [
     ],
     detail:
       "A small extension wants pencil. A complex spatial puzzle wants a physical model. A material-led project wants samples laid on a table in real light. Pick the wrong tool and you're designing the tool's project, not yours.",
-    image: "/process/modern-dwelling/floor-plan-1.svg",
+    image: "/process/modern-dwelling/physical-model.jpg",
     caption: "Plan study, drawn by hand, then digitised",
   },
   {

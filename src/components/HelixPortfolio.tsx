@@ -974,21 +974,26 @@ function DetailPanel({
       <div
         style={{
           position: "fixed",
-          bottom: "48px",
-          right: isMobile ? "50%" : "calc(280px - 40px)",
-          transform: isMobile ? "translateX(50%)" : "none",
+          bottom: "32px",
+          left: isMobile ? "50%" : "calc(100% - 560px)",
+          transform: isMobile ? "translateX(-50%)" : "none",
+          padding: "8px 14px",
           fontFamily: "var(--font-jetbrains)",
           fontSize: "10px",
           letterSpacing: "0.2em",
           textTransform: "uppercase",
-          color: "var(--ink-soft)",
+          color: "var(--ink)",
+          background: "#f4f1ea",
+          border: "1px solid #111",
+          borderLeft: isMobile ? "1px solid #111" : "none",
+          borderBottom: "none",
           opacity: scrollIndicatorOpacity,
           transition: "opacity 0.2s ease",
           pointerEvents: "none",
           zIndex: 41,
         }}
       >
-        Scroll down
+        scroll down ↓
       </div>
       <style>{`
         @keyframes slideIn {

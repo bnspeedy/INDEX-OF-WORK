@@ -129,7 +129,9 @@ a {
 .side-rail::-webkit-scrollbar,
 .detail-panel::-webkit-scrollbar,
 .mobile-list::-webkit-scrollbar {
-  width: 1px;
+  width: 4px;
+  -webkit-appearance: none;
+  background: transparent;
 }
 
 .side-rail::-webkit-scrollbar-track,
@@ -142,6 +144,7 @@ a {
 .detail-panel::-webkit-scrollbar-thumb,
 .mobile-list::-webkit-scrollbar-thumb {
   background: var(--ink);
+  border-radius: 0;
 }
 
 .side-rail,

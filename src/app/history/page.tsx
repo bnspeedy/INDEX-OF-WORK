@@ -201,7 +201,7 @@ export default function HistoryPage() {
                   <div className={styles.rallyCard}>
                     <img src="/history/mongol-rally/01.jpg" alt="Mongol Rally, mountain pass" />
                   </div>
-                  <div className={styles.rallyCard}>
+                  <div className={`${styles.rallyCard} ${styles.rallyCardPortrait}`}>
                     <img src="/history/mongol-rally/02.jpg" alt="Mongol Rally, storm rolling in" />
                   </div>
                   <div className={styles.rallyCard}>

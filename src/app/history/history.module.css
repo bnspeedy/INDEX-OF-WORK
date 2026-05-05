@@ -283,6 +283,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-top: 24px;
+  align-items: start;
 }
 
 .rallyCard {
@@ -292,6 +293,10 @@
   aspect-ratio: 3 / 2;
   overflow: hidden;
   transition: box-shadow 0.2s;
+}
+
+.rallyCardPortrait {
+  aspect-ratio: 3 / 4;
 }
 
 .rallyCard:hover {

@@ -951,9 +951,13 @@ function DetailPanel({
     strip.scrollTo({ left: strip.scrollLeft + offset, behavior: "smooth" });
   }, [galleryIndex]);
 
+  const [panelScrollTop, setPanelScrollTop] = useState(0);
+  const scrollIndicatorOpacity = Math.max(0, 1 - panelScrollTop / 40);
+
   return (
     <div
       className="detail-panel"
+      onScroll={(e) => setPanelScrollTop(e.currentTarget.scrollTop)}
       style={{
         position: "absolute",
         right: 0,
@@ -967,6 +971,25 @@ function DetailPanel({
         animation: "slideIn 0.3s ease",
       }}
     >
+      <div
+        style={{
+          position: "fixed",
+          bottom: "48px",
+          right: isMobile ? "50%" : "calc(280px - 40px)",
+          transform: isMobile ? "translateX(50%)" : "none",
+          fontFamily: "var(--font-jetbrains)",
+          fontSize: "10px",
+          letterSpacing: "0.2em",
+          textTransform: "uppercase",
+          color: "var(--ink-soft)",
+          opacity: scrollIndicatorOpacity,
+          transition: "opacity 0.2s ease",
+          pointerEvents: "none",
+          zIndex: 41,
+        }}
+      >
+        Scroll down
+      </div>
       <style>{`
         @keyframes slideIn {
           from { transform: translateX(100%); }

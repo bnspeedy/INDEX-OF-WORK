@@ -101,14 +101,14 @@ function EssayView() {
               {i === 3 ? (
                 <div className={styles.imagePair}>
                   <ChapterImage
-                    src="/process/modern-dwelling/floor-plan-1.svg"
-                    alt="Plan iteration A"
-                    caption="Plan study A · early"
+                    src="/process/modern-dwelling/physical-model.jpg"
+                    alt="Physical model"
+                    caption="Physical modelling"
                   />
                   <ChapterImage
-                    src="/process/modern-dwelling/floor-plan-2.svg"
-                    alt="Plan iteration B"
-                    caption="Plan study B · resolved"
+                    src="/process/modern-dwelling/resolved-render.jpg"
+                    alt="Resolved visual"
+                    caption="Resolved visual imagery"
                   />
                 </div>
               ) : (

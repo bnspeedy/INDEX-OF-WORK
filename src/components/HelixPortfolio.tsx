@@ -521,9 +521,9 @@ function TopBar({ isMobile }: { isMobile: boolean }) {
         style={{
           display: isMobile ? "none" : "flex",
           gap: "24px",
-          position: "absolute",
+          position: "fixed",
           left: "50%",
-          top: "50%",
+          top: "20px",
           transform: "translate(-50%, -50%)",
         }}
       >

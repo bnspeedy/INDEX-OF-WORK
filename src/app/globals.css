@@ -129,7 +129,7 @@ a {
 .side-rail::-webkit-scrollbar,
 .detail-panel::-webkit-scrollbar,
 .mobile-list::-webkit-scrollbar {
-  width: 4px;
+  width: 2px;
   -webkit-appearance: none;
   background: transparent;
 }

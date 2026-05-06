@@ -1,0 +1,97 @@
+/* Hamburger button, only shown on mobile. Sits in the top bar's right slot. */
+.toggle {
+  display: none;
+  position: relative;
+  width: 28px;
+  height: 28px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 201;
+}
+
+.line {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  height: 1px;
+  background: var(--ink);
+  transition: transform 0.25s ease, top 0.25s ease;
+}
+
+.line:nth-child(1) {
+  top: 11px;
+}
+
+.line:nth-child(2) {
+  top: 17px;
+}
+
+.lineOpenTop {
+  top: 14px !important;
+  transform: rotate(45deg);
+}
+
+.lineOpenBottom {
+  top: 14px !important;
+  transform: rotate(-45deg);
+}
+
+/* Full-screen overlay menu */
+.overlay {
+  position: fixed;
+  top: 40px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg);
+  z-index: 199;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 60px 24px 32px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.link {
+  font-family: var(--font-instrument-serif);
+  font-size: 56px;
+  line-height: 1;
+  letter-spacing: -1px;
+  color: var(--ink);
+  text-transform: none;
+  text-decoration: none;
+  display: block;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.15);
+  transition: color 0.2s;
+}
+
+.link:hover,
+.link:active {
+  color: var(--accent);
+}
+
+.linkActive {
+  color: var(--accent);
+}
+
+.footer {
+  font-family: var(--font-jetbrains);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 768px) {
+  .toggle {
+    display: block;
+  }
+}

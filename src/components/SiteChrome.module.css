@@ -60,3 +60,21 @@
   letter-spacing: 0.15em;
   z-index: 100;
 }
+
+/* Mobile: hide centred nav and right-side location label, hamburger takes over */
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+  .topRight {
+    display: none;
+  }
+  .topBar {
+    padding: 0 16px;
+  }
+  .bottomBar {
+    padding: 0 16px;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+}

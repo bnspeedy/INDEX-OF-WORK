@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { createPortal } from "react-dom";
 import Image from "next/image";
+import MobileMenu from "./MobileMenu";
 import { PROJECTS, type Project } from "@/data/projects";
 
 const CARDS_PER_RING = 4;
@@ -531,7 +532,7 @@ function TopBar({ isMobile }: { isMobile: boolean }) {
         <Link href="/process" style={{ color: "var(--ink)", transition: "color 0.2s" }}>Process</Link>
         <Link href="/history" style={{ color: "var(--ink)", transition: "color 0.2s" }}>History</Link>
       </nav>
-      <span>Auckland, NZ</span>
+      {isMobile ? <MobileMenu /> : <span>Auckland, NZ</span>}
     </div>
   );
 }

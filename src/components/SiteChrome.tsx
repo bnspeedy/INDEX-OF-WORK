@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./SiteChrome.module.css";
+import MobileMenu from "./MobileMenu";
 
 type Props = {
   topLeft: string;
@@ -27,7 +28,7 @@ export default function SiteChrome({
   return (
     <>
       <div className={styles.topBar}>
-        <span>{topLeft}</span>
+        <span className={styles.topLeft}>{topLeft}</span>
         <nav className={styles.nav}>
           {isWork ? (
             <span className={styles.navActive}>Work</span>
@@ -45,7 +46,8 @@ export default function SiteChrome({
             <Link href="/history">History</Link>
           )}
         </nav>
-        <span>{topRight}</span>
+        <span className={styles.topRight}>{topRight}</span>
+        <MobileMenu />
       </div>
 
       {children}
